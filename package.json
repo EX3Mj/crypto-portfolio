@@ -1,6 +1,7 @@
 {
   "name": "react-with-ts",
   "version": "0.1.0",
+  "homepage": "./",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^2.6.1",
@@ -24,7 +25,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build"
+    "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -46,6 +49,7 @@
   },
   "devDependencies": {
     "@types/react-transition-group": "^4.4.12",
+    "gh-pages": "^6.3.0",
     "sass": "^1.85.1"
   }
 }

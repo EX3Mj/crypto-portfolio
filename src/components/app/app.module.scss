@@ -1,6 +1,7 @@
 .wrapper {
   padding: 45px;
   max-width: 1440px;
+  margin: 0 auto;
 
   @media (max-width: 599px) {
     padding: clamp(0.625rem, 15.625vw - 3.037rem, 2.813rem);
