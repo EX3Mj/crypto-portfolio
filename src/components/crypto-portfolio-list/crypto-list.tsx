@@ -69,7 +69,7 @@ export const CryptoList: React.FC<CryptoListProps> = memo(
     return (
       <>
         {isLoadingCrypto ? (
-          <div className={styles.loaderWrapper}><Loader /></div>
+          <Loader />
         ) : !isDataLoaded ?
         null : filteredData.length === 0 ? (
           <span className={styles.list_empty}>

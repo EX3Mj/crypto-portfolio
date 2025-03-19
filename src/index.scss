@@ -6,6 +6,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   
+  color: black; /* Основной цвет текста */
+}
+
+/* Убедимся, что элементы списка также наследуют цвет */
+ul, ol, li, button {
+    color: inherit; /* Наследует цвет от родителя (body) */
 }
 
 code {

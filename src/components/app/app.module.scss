@@ -11,7 +11,7 @@
 .content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
   padding-block: 100px;
 
   @media (max-width: 930px) {
