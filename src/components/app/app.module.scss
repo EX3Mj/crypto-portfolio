@@ -1,0 +1,19 @@
+.wrapper {
+  padding: 45px;
+  max-width: 1440px;
+
+  @media (max-width: 599px) {
+    padding: clamp(0.625rem, 15.625vw - 3.037rem, 2.813rem);
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: 100px;
+
+  @media (max-width: 930px) {
+    padding-block: clamp(1.25rem, 4.505vw + 0.194rem, 2.813rem);
+  }
+}

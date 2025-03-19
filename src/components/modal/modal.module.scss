@@ -1,0 +1,49 @@
+.modal {
+  box-sizing: border-box;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  margin: auto;
+  padding: 40px 40px 60px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0px 24px 32px rgba(0, 0, 0, 0.04),
+    0px 16px 24px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04),
+    0px 0px 1px rgba(0, 0, 0, 0.04);
+}
+
+.modalEnter {
+  opacity: 0;
+}
+
+.modalEnterActive {
+  opacity: 1;
+  transition: opacity 300ms ease;
+}
+
+.modalExit {
+  opacity: 1;
+}
+
+.modalExitActive {
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+
+.button {
+  display: flex;
+  position: absolute;
+  left: calc(100% - 5px);
+  bottom: calc(100% - 5px);
+  width: 24px;
+  height: 24px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0);
+  margin-left: auto;
+  padding: 0;
+}

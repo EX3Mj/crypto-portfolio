@@ -1,0 +1,54 @@
+@import '../../styles/variables.scss';
+
+.list_empty {
+  font-family: inherit;
+  text-align: center;
+  display: block;
+  font-size: 20px;
+  padding-top: 50px;
+}
+
+.loaderWrapper {
+  justify-self: center;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  &Compact {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.list__header {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 10px;
+
+  @media (max-width: 930px) {
+    font-size: clamp(0.75rem, 0.93vw + 0.459rem, 1rem);
+  }
+
+  @media (max-width: 499px) {
+    display: none;
+  }
+}
+
+.total {
+  display: block;
+  padding-bottom: 20px;
+  font-family: inherit;
+  font-weight: bold;
+  color: $primary-color;
+  @media (max-width: 499px) {
+    padding-bottom: 0px;
+  }
+}
