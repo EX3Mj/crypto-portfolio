@@ -17,6 +17,11 @@
   }
 }
 
+.card__element {
+  width: 100%;
+  display: block;
+}
+
 .card__content {
   display: grid;
   grid-template-columns: repeat(6, 1fr); // 6 одинаковых колонок

@@ -10,6 +10,7 @@
 
 .list {
   list-style: none;
+  width: 100%;
   padding: 0;
   margin: 0;
 
@@ -21,6 +22,7 @@
 }
 
 .list__header {
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   font-family: inherit;
