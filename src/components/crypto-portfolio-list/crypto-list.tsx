@@ -1,4 +1,4 @@
-import React, { memo, useMemo } from "react";
+import React, { memo, useMemo, useState } from "react";
 import styles from "./crypto-list.module.scss";
 import { useSelector, useDispatch } from "../../services/store";
 import {
@@ -10,6 +10,7 @@ import classNames from "classnames";
 import { formatPrice } from "../../utils/utlis-functions";
 import { CryptoCard } from "../crypto-portfolio-card";
 import { TCryptoAsset } from "../../utils/type";
+import { DeletePortfolioItemForm } from "../detelePorfolioItemForm";
 
 type CryptoListProps = {
   type: "form" | "active";
@@ -25,6 +26,10 @@ export const CryptoList: React.FC<CryptoListProps> = memo(
       (state) => state.crypto.isLoadingCrypto
     );
     const isDataLoaded = useSelector((state) => state.crypto.isDataLoaded);
+    const [isDeletePortfolioItemFormOpen, setIsDeletePortfolioItemFormOpen] =
+      useState<boolean>(false);
+    const [idDeletePortfolioItemFormOpen, setIdDeletePortfolioItemFormOpen] =
+      useState<string>("");
 
     const filteredData = useMemo(() => {
       let result =
@@ -46,7 +51,14 @@ export const CryptoList: React.FC<CryptoListProps> = memo(
     };
 
     const handleDeletePortfolioItem = (id: string) => {
-      dispatch(removeFromPortfolio(id));
+      console.log('Привет');
+      setIdDeletePortfolioItemFormOpen(id);
+      setIsDeletePortfolioItemFormOpen(true);
+    };
+
+    const handleCloseDeleteForm = () => {
+      setIsDeletePortfolioItemFormOpen(false);
+      setIdDeletePortfolioItemFormOpen('');
     };
 
     const totalPortfolio: number | null = useMemo(() => {
@@ -70,8 +82,7 @@ export const CryptoList: React.FC<CryptoListProps> = memo(
       <>
         {isLoadingCrypto ? (
           <Loader />
-        ) : !isDataLoaded ?
-        null : filteredData.length === 0 ? (
+        ) : !isDataLoaded ? null : filteredData.length === 0 ? (
           <span className={styles.list_empty}>
             {compact
               ? `Криптовалюты не найдены`
@@ -79,19 +90,23 @@ export const CryptoList: React.FC<CryptoListProps> = memo(
           </span>
         ) : (
           <>
-            {!compact ? <span className={styles.total}>Общая сумма портфеля: ${'\u00A0'}{formatPrice(totalPortfolio)}</span> : null}
             {!compact ? (
-                <div aria-label="Шапка таблица" className={styles.list__header}>
-                  <span>Название</span>
-                  <span>Цена</span>
-                  <span>Количество</span>
-                  <span>Общая стоимость</span>
-                  <span>Изм. за 24 ч.</span>
-                  <span>% портфеля</span>
-                </div>
-              ) : null}
-            <ul aria-label='Список криптовалют'className={listClass}>
-              
+              <span className={styles.total}>
+                Общая сумма портфеля: ${"\u00A0"}
+                {formatPrice(totalPortfolio)}
+              </span>
+            ) : null}
+            {!compact ? (
+              <div aria-label="Шапка таблица" className={styles.list__header}>
+                <span>Название</span>
+                <span>Цена</span>
+                <span>Количество</span>
+                <span>Общая стоимость</span>
+                <span>Изм. за 24 ч.</span>
+                <span>% портфеля</span>
+              </div>
+            ) : null}
+            <ul aria-label="Список криптовалют" className={listClass}>
               {filteredData.map((asset) => (
                 <CryptoCard
                   key={asset.id}
@@ -106,6 +121,13 @@ export const CryptoList: React.FC<CryptoListProps> = memo(
                 />
               ))}
             </ul>
+            <DeletePortfolioItemForm
+              onClose={handleCloseDeleteForm}
+              isOpen={isDeletePortfolioItemFormOpen}
+              onConfirm={() =>
+                dispatch(removeFromPortfolio(idDeletePortfolioItemFormOpen))
+              }
+            />
           </>
         )}
       </>
